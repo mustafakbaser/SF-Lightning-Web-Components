@@ -4,21 +4,28 @@ public with sharing class BoatDataService {
     @AuraEnabled(cacheable = true)
     public static List<Boat__c> getBoats(String boatTypeId){
         List<Boat__c> listOfBoats = [
-            SELECT Name, BoatType__c, Contact__c, Description__c, Geolocation__c, BoatType__r.Name, Contact__r.Name, Length__c, Picture__c, Year_Built__c
+            SELECT Name,
+            BoatType__c,
+            Contact__c,
+            Description__c,
+            Geolocation__c,
+            BoatType__r.Name,
+            Contact__r.Name,
+            Picture__c,
+            Year_Built__c
             FROM Boat__c
         ];
 
         // To check if empty. String.isNotBlank(boatTypeId) is an alternative of it.
         if(boatTypeId != null){
             listOfBoats = [
-            SELECT Name, 
-            BoatType__c, 
+            SELECT Name,
+            BoatType__c,
             Contact__c,
             Description__c,
             Geolocation__c, 
-            Length__c, 
-            Picture__c, 
-            Year_Built__c, 
+            Picture__c,
+            Year_Built__c,
             BoatType__r.Name,
             Contact__r.Name
             FROM Boat__c
@@ -38,8 +45,8 @@ public with sharing class BoatDataService {
             SELECT Id,
             BoatType__c,
             BoatType__r.Name,
-            Price__c,
-            Lenght__c
+            Price__c
+            //Lenght__c
             FROM Boat__c
             WHERE Id = :boatId
             WITH SECURITY_ENFORCED
