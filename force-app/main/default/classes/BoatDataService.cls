@@ -7,6 +7,7 @@ public with sharing class BoatDataService {
             SELECT Name,
             BoatType__c,
             Contact__c,
+            //Lenght__c
             Description__c,
             Geolocation__c,
             BoatType__r.Name,
@@ -17,11 +18,12 @@ public with sharing class BoatDataService {
         ];
 
         // To check if empty. String.isNotBlank(boatTypeId) is an alternative of it.
-        if(boatTypeId != null){
+        if(String.isNotBlank(boatTypeId)){
             listOfBoats = [
             SELECT Name,
             BoatType__c,
             Contact__c,
+            //Lenght__c
             Description__c,
             Geolocation__c, 
             Picture__c,
@@ -84,7 +86,7 @@ public with sharing class BoatDataService {
         String boatLocationQuery = 'SELECT Name, Geolocation__c FROM Boat__c';
         String boatLocations = boatLocationQuery;
 
-        if(boatTypeId != null){
+        if(String.isNotBlank(boatTypeId)){
             boatLocations = 'SELECT Name, Geolocation__c FROM Boat__c WHERE BoatType__c = :boatTypeId WITH SECURITY_ENFORCED';
         }
         return JSON.serialize(Database.query(boatLocations));
