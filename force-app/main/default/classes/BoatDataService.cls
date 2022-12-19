@@ -66,7 +66,7 @@ public with sharing class BoatDataService {
     }
 
     // @AuraEnabled for getting list cacheable
-    @AuraEnabled(cacheable = true)
+    @AuraEnabled(cacheable = false)
     public static List<BoatReview__c> getAllReviews(Id boatId){
         // Returns Comment and Rating of Boats
         return [
