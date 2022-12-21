@@ -19,7 +19,7 @@ export default class BoatSearchResults extends LightningElement {
     boats;
     isLoading = true;
     isRendered;
-    locationMarkers = [];
+    mapMarkers = [];
     latitude;
     longitude;
     
@@ -73,6 +73,6 @@ export default class BoatSearchResults extends LightningElement {
           Longitude: this.longitude
         }
       });
-      this.locationMarkers = newMarkers;
+      this.mapMarkers = newMarkers;
     }
 }
