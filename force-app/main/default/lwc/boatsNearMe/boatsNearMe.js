@@ -12,17 +12,13 @@ const STD_USER_ICON = 'standart:user';
 
 export default class BoatSearchResults extends LightningElement {
 
-    @api 
-    selectedBoatId;
-    columns = [];
+    @api
     boatTypeId;
-    boats;
+    mapMarkers = [];
     isLoading = true;
     isRendered;
-    mapMarkers = [];
     latitude;
     longitude;
-    
 
     @wire(getBoatsByLocation, {latitude: '$latitude', longitude: '$longitude', boatTypeId: '$boatTypeId'})
     wiredBoatsJSON({error, data}){
