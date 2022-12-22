@@ -20,7 +20,6 @@ export default class BoatsNearMe extends LightningElement {
   isRendered;
   latitude;
   longitude;
-
  
   @wire(getBoatsByLocation, {latitude: '$latitude', longitude: '$longitude', boatTypeId: '$boatTypeId'})
   wiredBoatsJSON({error, data}) {
@@ -45,7 +44,7 @@ export default class BoatsNearMe extends LightningElement {
       this.isRendered = true;
   }
 
-  // Gets the location from the Browser
+  // Gets the location for using browser
   // position => {latitude and longitude}
   getLocationFromBrowser() {
       if (navigator.geolocation) {
